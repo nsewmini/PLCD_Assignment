@@ -17,7 +17,7 @@ Determine if the input string can be accepted by the defined grammar.
 ### Grammar
 
 The grammar provided for this project is:
-
+                                                          
 E → TE´
 
 E´→ +TE´|Ɛ
@@ -88,6 +88,19 @@ Open NetBeans
 
     Review the program's output to see the lexical analysis, symbol table contents, and parse tree structure based on the input string.
     Ensure to check for any error messages or exceptions in the console output if applicable.
+
+
+### Sample Input/Output
+
+![image](https://github.com/nsewmini/PLCD_Assignment/assets/96427674/503ce3e8-fb1c-428a-9b48-7b841baba18b)
+
+![image](https://github.com/nsewmini/PLCD_Assignment/assets/96427674/28c73fac-3686-4c4d-abed-13d209413da8)
+
+![image](https://github.com/nsewmini/PLCD_Assignment/assets/96427674/6a1d24af-78ea-4bca-92a7-2d25f5fb8cb0)
+
+![image](https://github.com/nsewmini/PLCD_Assignment/assets/96427674/e962ee60-9b85-4a94-b82f-cd099f6fc1a5)
+
+
 
 Additional Notes
 
