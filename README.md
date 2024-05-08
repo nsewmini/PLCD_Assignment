@@ -7,8 +7,11 @@
 This Java program simulates a lexical analyzer and a parser based on a specified grammar. The program is designed to:
 
 Tokenize input strings according to defined grammar rules.
+
 Construct a symbol table to store token information.
+
 Generate a top-down parse tree based on the input string.
+
 Determine if the input string can be accepted by the defined grammar.
 
 ### Grammar
@@ -30,8 +33,11 @@ id → 0|1|2|3|4|5|6|7|8|9|a…z|A…Z
 ### Program Features
 
 Lexical Analysis:
+
         Break down input strings into lexemes and map them to predefined token types using a symbol table.
+        
  Parsing:
+ 
         Construct a top-down parse tree based on the grammar rules.
         Determine if the input string is syntactically valid according to the grammar.
 
@@ -39,50 +45,56 @@ Lexical Analysis:
 
 The program consists of:
 
- Symbol Table: Stores lexemes along with their corresponding token types.
- Parse Tree: Utilizes a hierarchical structure to represent the parsing process.
- Main Parser Logic: Implements recursive descent parsing for the specified grammar.
+     Symbol Table: Stores lexemes along with their corresponding token types.
+     Parse Tree: Utilizes a hierarchical structure to represent the parsing process.
+     Main Parser Logic: Implements recursive descent parsing for the specified grammar.
 
 ### Usage
 Running the Program:
 
 To run your program using NetBeans, follow these steps:
-1. Open NetBeans
-Launch the NetBeans IDE on your computer.
+
+Open NetBeans
+    Launch the NetBeans IDE on your computer.
 
 2. Open the Project
-Go to File > Open Project...
-Navigate to the directory where your Java project is located.
-Select the project folder and click Open.
+
+    Go to File > Open Project...
+    Navigate to the directory where your Java project is located.
+    Select the project folder and click Open.
 
 3. Build the Project
-In NetBeans, locate your project in the Projects pane.
-Right-click on the project name and choose Build.
-This will compile your Java files and build the project.
+
+    In NetBeans, locate your project in the Projects pane.
+    Right-click on the project name and choose Build.
+    This will compile your Java files and build the project.
 
 4. Run the Main Class
-After the project is built successfully, locate your main Java class (Parser.java) in the project structure.
-Right-click on Parser.java and choose Run File.
+
+    After the project is built successfully, locate your main Java class (Parser.java) in the project structure.
+    Right-click on Parser.java and choose Run File.
 
 5. Provide Input
-NetBeans will open a console or output window where your program will prompt you to enter an input string.
-Enter the desired input string and press Enter.
+
+    NetBeans will open a console or output window where your program will prompt you to enter an input string.
+    Enter the desired input string and press Enter.
 
 6. View Output
-The program will process the input string based on the specified grammar rules.
-Output will be displayed in the NetBeans console, showing lexemes, symbol types, symbol table entries, and the parse tree.
+
+    The program will process the input string based on the specified grammar rules.
+    Output will be displayed in the NetBeans console, showing lexemes, symbol types, symbol table entries, and the parse tree.
 
 7. Analyze Results
-Review the program's output to see the lexical analysis, symbol table contents, and parse tree structure based on the input string.
-Ensure to check for any error messages or exceptions in the console output if applicable.
+
+    Review the program's output to see the lexical analysis, symbol table contents, and parse tree structure based on the input string.
+    Ensure to check for any error messages or exceptions in the console output if applicable.
 
 Additional Notes
-Ensure that your NetBeans IDE is properly configured to compile and run Java projects.
-Make sure your project dependencies and settings are correctly set up within NetBeans.
-If encountering any issues during compilation or execution, refer to NetBeans documentation or seek assistance for troubleshooting.
 
+    Ensure that your NetBeans IDE is properly configured to compile and run Java projects.
+    Make sure your project dependencies and settings are correctly set up within NetBeans.
+    If encountering any issues during compilation or execution, refer to NetBeans documentation or seek assistance for troubleshooting.
 
-        
 
                         
 
