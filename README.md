@@ -34,20 +34,20 @@ id → 0|1|2|3|4|5|6|7|8|9|a…z|A…Z
 
 Lexical Analysis:
 
-        Break down input strings into lexemes and map them to predefined token types using a symbol table.
+      Break down input strings into lexemes and map them to predefined token types using a symbol table.
         
  Parsing:
  
-        Construct a top-down parse tree based on the grammar rules.
-        Determine if the input string is syntactically valid according to the grammar.
+       Construct a top-down parse tree based on the grammar rules.
+       Determine if the input string is syntactically valid according to the grammar.
 
 ### Implemented Components
 
 The program consists of:
 
-     Symbol Table: Stores lexemes along with their corresponding token types.
-     Parse Tree: Utilizes a hierarchical structure to represent the parsing process.
-     Main Parser Logic: Implements recursive descent parsing for the specified grammar.
+       Symbol Table: Stores lexemes along with their corresponding token types.
+       Parse Tree: Utilizes a hierarchical structure to represent the parsing process.
+       Main Parser Logic: Implements recursive descent parsing for the specified grammar.
 
 ### Usage
 Running the Program:
