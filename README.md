@@ -27,7 +27,7 @@ F → (E)|id
 
 id → 0|1|2|3|4|5|6|7|8|9|a…z|A…Z
 
-#Program Features
+###Program Features
 
 Lexical Analysis:
         Break down input strings into lexemes and map them to predefined token types using a symbol table.
@@ -35,7 +35,7 @@ Lexical Analysis:
         Construct a top-down parse tree based on the grammar rules.
         Determine if the input string is syntactically valid according to the grammar.
 
-#Implemented Components
+###Implemented Components
 
 The program consists of:
 
