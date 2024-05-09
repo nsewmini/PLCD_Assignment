@@ -88,3 +88,93 @@ public class Parser {
             // add symbol type to the list of symboltypes
             symbolTypes.add(symbol.symbolType);
         }
+     
+
+        System.out.println("Lexemes: " + lexemes);// print lexemes 
+        System.out.println("Symbols: " + symbolTypes);// print symboltypes
+
+        // print symboltable
+        System.out.println("\nSymbol Table:");
+        for (Symbol symbol : symbolTable) {
+            System.out.println("Lexeme: " + symbol.lexeme + ", Symbol Type: " + symbol.symbolType);
+        }
+
+        // print parsetree
+        System.out.println("\nParse Tree:");
+        displayParseTree(root, 0);
+    }
+
+    // display gramar rules 
+    private static boolean ExpressionParserE(Waypoint x) {
+        Waypoint child = new Waypoint("T");
+        x.addChild(child);
+        if (ExpressionParserT(child)) {
+            return ExpressionParserEPrime(x);
+        }
+        return false;
+    }
+
+    private static boolean ExpressionParserEPrime(Waypoint x) {
+   // if there are othr terms to parse and if the caracter to be enter is  '+' or  '+', test them
+    if (index < input.length() && (input.charAt(index) == '+' || input.charAt(index) == '-')) {
+        // to find symbol and it typeneed a symbolmap.
+        String symbol = Character.toString(input.charAt(index));
+        String symbolType = symbolMap.get(symbol);
+        // putsymbol in table of symbols
+        symbolTable.add(new Symbol(symbol, symbolType));
+       // make an opeator waypoint and add it as the child of the waypoint.
+        Waypoint child = new Waypoint(symbolMap.get(symbol));
+        x.addChild(child);
+        index++; // change to the nextchracter in the inputstring
+        // Create a new waypoint for next term in the expresion
+        Waypoint newChild = new Waypoint("T");
+        x.addChild(newChild);
+      
+// look at the underlying phrase ofexpression.
+        if (ExpressionParserT(newChild)) {
+         // if it is acceptable to interpret the next trme, recursivelyParse the remainder of E'.
+            return ExpressionParserEPrime(x);
+        }
+        // return false if followig term's parsing is incorect
+        return false;
+    }
+    // return true to show that E's paring is effective if there are no more terms to parse.
+    return true;
+}
+
+    private static boolean ExpressionParserT(Waypoint x) {
+    //make a waypoint for element and add it to list of current waypoints aschild.
+    Waypoint child = new Waypoint("F");
+    x.addChild(child);
+    // Parse the element
+    if (ExpressionParserF(child)) {
+        // if the element's parsing is successful, use T' to parse the last part of the term.
+        return ExpressionParserTPrime(x);
+    }
+    // return false if the element's processing is unsuccessful.
+    return false;
+}
+
+    private static boolean ExpressionParserTPrime(Waypoint x) {
+    // check if there are extra variables to consider and if the current character is a '*' or '/'
+    if (index < input.length() && (input.charAt(index) == '*' || input.charAt(index) == '/')) {
+        // find the symbol and its type from the symbolmap
+        String symbol = Character.toString(input.charAt(index));
+        String symbolType = symbolMap.get(symbol);
+        // added the symbol to the symbol table
+        symbolTable.add(new Symbol(symbol, symbolType));
+        // set a waypoint for the operator and added it as a child of the currently waypoint
+        Waypoint child = new Waypoint(symbolMap.get(symbol));
+        x.addChild(child);
+        index++; // change to the next character in the input string
+        // create a new waypoint for the next factor 
+        Waypoint newChild = new Waypoint("F");
+        x.addChild(newChild);
+        // parse the next factor in theexpresion
+        if (ExpressionParserF(newChild)) {
+            // if procesing of the next component is successful, continusly parse rest of T'
+            return ExpressionParserTPrime(x);
+        }
+        // return false ifnext factor procesing is unsucessful.
+        return false;
+    }
