@@ -178,3 +178,84 @@ public class Parser {
         // return false ifnext factor procesing is unsucessful.
         return false;
     }
+ // if there are no extra variables to be considered, return true suggsting successful parsing of T'
+    return true;
+}
+    private static boolean ExpressionParserF(Waypoint x) {
+    // examine if there are the characters left to process in the input
+    if (index < input.length()) {
+        char c = input.charAt(index);
+        if (c == '(') {
+            // manage opening parentesis
+            String symbol = Character.toString(input.charAt(index));
+            String symbolType = symbolMap.get(symbol);
+            // added the open parentesis symbol to the symboltable
+            symbolTable.add(new Symbol(symbol, symbolType));
+            // added a waypoint for the open parenthesis and add it as a child of the currentwaypoint
+            Waypoint child = new Waypoint(symbolType);
+            x.addChild(child);
+            index++; // change to the nextcharacter in the inputstring
+            //Parse also the expressing themselves within parentheses
+            if (ExpressionParserE(child)) {
+                // after parsing the nestedexpression, expect a closingparenthesis
+                if (index < input.length() && input.charAt(index) == ')') {
+                    // added the closingparenthesis symbol to the symboltable
+                    symbol = Character.toString(input.charAt(index));
+                    symbolType = symbolMap.get(symbol);
+                    symbolTable.add(new Symbol(symbol, symbolType));
+                    // added a waypoint for the clos parenthesis and add it as a child of the currentwaypoint
+                    child = new Waypoint(symbolType);
+                    x.addChild(child);
+                    index++; // change to the nextcharacter in the inputstring
+                    return true;
+                } else {
+                    // when a close parenthesis is missed, the expression is notvalid
+                    return false;
+                }
+            } else {
+                // If the nested expression is not parsed correctly, the expression is not valid
+                return false;
+            }
+        } else if (c == ')' || c == '+' || c == '-' || c == '*' || c == '/') {
+            // handle other symbols
+            String symbol = Character.toString(input.charAt(index));
+            String symbolType = symbolMap.get(symbol);
+            // added the symbol to the symboltable
+            symbolTable.add(new Symbol(symbol, symbolType));
+            // added a waypoint for the symbol and added it as a child of the currentwaypoint
+            Waypoint child = new Waypoint(symbolType);
+            x.addChild(child);
+            index++; // change to the nextcharacter in the inputstring
+            return true;
+        } else if (Character.isDigit(c)) {
+            // handle numbers
+            StringBuilder numberBuilder = new StringBuilder();
+            while (index < input.length() && Character.isDigit(input.charAt(index))) {
+                numberBuilder.append(input.charAt(index));
+                index++; // change to the next character in the inputstring
+            }
+            String symbol = numberBuilder.toString();
+            // addd a waypoint for the number and added it as a child of the currentwaypoint
+            Waypoint child = new Waypoint(symbolMap.get("NUMBER"));
+            x.addChild(child);
+            // added the number to the symboltable
+            symbolTable.add(new Symbol(symbol, symbolMap.get("NUMBER")));
+            return true;
+        }
+    }
+    // when there are no characters left toparse, or when the currentharacter is invalid, return false
+    return false;
+}
+    // prin parsetree recursively
+    private static void displayParseTree(Waypoint x, int depth) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < depth; i++) {
+            sb.append("  ");
+        }
+        sb.append(x.label);
+        System.out.println(sb.toString());
+        for (Waypoint child : x.getChildren()) {
+            displayParseTree(child, depth + 1);
+        }
+    }
+}
