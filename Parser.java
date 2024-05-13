@@ -181,6 +181,7 @@ public class Parser {
  // if there are no extra variables to be considered, return true suggsting successful parsing of T'
     return true;
 }
+ 
     private static boolean ExpressionParserF(Waypoint x) {
     // examine if there are the characters left to process in the input
     if (index < input.length()) {
@@ -246,6 +247,7 @@ public class Parser {
     // when there are no characters left toparse, or when the currentharacter is invalid, return false
     return false;
 }
+ 
     // prin parsetree recursively
     private static void displayParseTree(Waypoint x, int depth) {
         StringBuilder sb = new StringBuilder();
